@@ -35,7 +35,7 @@ function evaluateTeacher() {
     return;
   }
 
-  const verdict = score >= 50 ? "Pass!" : "Failed!";
+  const verdict = grade >= 80 ? "Pass!" : "Failed!";
   document.getElementById("result").textContent =
     "Teacher: " + teacher + ", Student: " + student + ", Result: " + verdict;
 }
