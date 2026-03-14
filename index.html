@@ -15,10 +15,13 @@
   <div class="card shadow-sm mx-auto" style="max-width: 400px;">
     <div class="card-body text-center">
       <h3 class="mb-4">Student Grade</h3>
+
       <input type="text" id="teacher" class="form-control mb-3" placeholder="Teacher Name">
       <input type="text" id="student" class="form-control mb-3" placeholder="Student Name">
       <input type="number" id="score" class="form-control mb-3" placeholder="Student Grade">
-      <button class="btn btn-primary w-100" onclick="evaluateTeacher()">Grade</button>
+
+      <button class="btn btn-primary w-100" onclick="StudentGrade()">Grade</button>
+
       <p id="result" class="mt-3 fw-bold fs-5"></p>
     </div>
   </div>
@@ -28,14 +31,15 @@
 function evaluateTeacher() {
   const teacher = document.getElementById("teacher").value.trim();
   const student = document.getElementById("student").value.trim();
-  const grade = Number(document.getElementById("Grade").value);
+  const score = Number(document.getElementById("score").value);
 
   if (!teacher || !student || isNaN(score)) {
     document.getElementById("result").textContent = "Please enter valid data!";
     return;
   }
 
-  const verdict = grade >= 80 ? "Pass!" : "Failed!";
+  const verdict = score >= 50 ? "Pass!" : "Failed!";
+
   document.getElementById("result").textContent =
     "Teacher: " + teacher + ", Student: " + student + ", Result: " + verdict;
 }
@@ -43,7 +47,7 @@ function evaluateTeacher() {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/service-worker.js")
     .then(() => console.log("Service Worker registered"))
-    .catch(err => console.log(" registration failed:", err));
+    .catch(err => console.log("registration failed:", err));
 }
 </script>
 
